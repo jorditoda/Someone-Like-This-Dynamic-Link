@@ -14,7 +14,7 @@ const templateConfig: TemplateConfig = {
   forceTheme: false,
   // Shows switch to toggle between dark and light modes
   showThemeSwitch: true,
-//   appStoreLink: "https://apps.apple.com/us/app/google/id284815942",
+  appStoreLink: "https://apps.apple.com/us/app/like-this/id6739965531",
   googlePlayLink:
     "https://play.google.com/store/apps/details?id=com.stormfkrs.like_this",
   footer: {
@@ -81,15 +81,18 @@ const templateConfig: TemplateConfig = {
         {
           name: "Ana P.",
           comment:
-            "Soy un gran fan de las apps que combinan creatividad y diversión, y ‘Like This’ lo hace perfectamente. La animación de nieve navideña me ha encantado, ¡realmente le da un toque especial a la temporada!",        },
+            "Soy un gran fan de las apps que combinan creatividad y diversión, y ‘Like This’ lo hace perfectamente. La animación de nieve navideña me ha encantado, ¡realmente le da un toque especial a la temporada!",
+            },
         {
           name: "Jose R.",
           comment:
-"Esta app es perfecta para mantener entretenidos a mis hijos durante las salidas. Les encanta buscar los ítems que agregamos en el juego. La nueva función de Bingo añade una competencia sana y mucha diversión.",        },
+"Esta app es perfecta para mantener entretenidos a mis hijos durante las salidas. Les encanta buscar los ítems que agregamos en el juego. La nueva función de Bingo añade una competencia sana y mucha diversión.",
+},
         {
           name: "Laura M.",
           comment:
-"La simplicidad y el ingenio de ‘Like This’ me han sorprendido gratamente. Crear mis propias tarjetas de Bingo con ítems originales ha sido una experiencia única. ¡Gran trabajo con esta app!",        },
+"La simplicidad y el ingenio de ‘Like This’ me han sorprendido gratamente. Crear mis propias tarjetas de Bingo con ítems originales ha sido una experiencia única. ¡Gran trabajo con esta app!",
+},
       ],
     },
 //     partners: {
