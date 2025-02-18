@@ -114,13 +114,13 @@ const templateConfig: TemplateConfig = {
           title: "Create a personalized game",
           subtitle:
             "Start the fun by creating a new game. Add the items or challenges you want your friends to find or accomplish. Let your imagination run wild with challenges like \"An elephant with a red hat\" or \"A bald man on a bicycle\"!",
-          image: "/stock/01.webp",
+          image: "/screenshots/4.png",
         },
         {
           title: "Invite your friends",
           subtitle:
             "Share the game with your friends so they can join. They can easily connect from their devices and will be ready to start playing together.",
-          image: "/stock/02.webp",
+          image: "/screenshots/share.png",
         },
         {
           title: "Find the items",
