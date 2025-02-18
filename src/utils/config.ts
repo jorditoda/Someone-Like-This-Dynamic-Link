@@ -55,7 +55,7 @@ const templateConfig: TemplateConfig = {
     screenshots: [
       "/screenshots/1.webp",
       "/screenshots/2.webp",
-      "/screenshots/3.webp",
+      "/screenshots/4.png",
     ],
   },
   home: {
@@ -111,27 +111,27 @@ const templateConfig: TemplateConfig = {
         "Explore our comprehensive step-by-step guide to understand how our process ensures seamless and effective results",
       steps: [
         {
-          title: "Install the App",
+          title: "Create a personalized game",
           subtitle:
-            "Download and install the app on your device to get started quickly and easily.",
+            "Start the fun by creating a new game. Add the items or challenges you want your friends to find or accomplish. Let your imagination run wild with challenges like \"An elephant with a red hat\" or \"A bald man on a bicycle\"!",
           image: "/stock/01.webp",
         },
         {
-          title: "Create an Account",
+          title: "Invite your friends",
           subtitle:
-            "Sign up by entering your personal details and verifying your email to create a new account in just a few minutes.",
+            "Share the game with your friends so they can join. They can easily connect from their devices and will be ready to start playing together.",
           image: "/stock/02.webp",
         },
         {
-          title: "Create a new Game",
+          title: "Find the items",
           subtitle:
-            "Create a new fully customized game to play with your friends",
+            "During the game, all participants will try to find the added items. As they find them, they'll mark them in the app. Keep a keen eye on your surroundings and pay attention to every detail!",
           image: "/stock/03.webp",
         },
         {
-          title: "Have fun",
+          title: "Compete and win",
           subtitle:
-            "Play with your friends in a single game and beat them all",
+            "The game ends when all the items have been found or the set time runs out. The player who has marked the most items will be the winner. Show that you're the fastest and most observant in the group!",
           image: "/stock/04.webp",
         },
 //         {
@@ -214,9 +214,9 @@ const templateConfig: TemplateConfig = {
       subtitle:
         "Turning Everyday Moments into Exciting Challenges. Unleash Your Imagination and Have Fun!",
       screenshots: [
-        "/screenshots/3.webp",
-        "/screenshots/2.webp",
-        "/screenshots/1.webp",
+        "/screenshots/3.png",
+        "/screenshots/2.png",
+        "/screenshots/1.png",
       ],
 //       rewards: ["App of the year \n 1st", "Product of the day"],
       usersDescription: "100+ people already using the app",
