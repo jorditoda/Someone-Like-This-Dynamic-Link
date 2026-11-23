@@ -35,6 +35,9 @@ const { backgroundGrid, seo, logo, theme, forceTheme } =
     <meta property="twitter:description" content={seo.description} />
     <meta property="twitter:image" content={new URL(logo, Astro.url)} />
 
+    <!-- Extra tags per page (robots, Smart App Banner...) -->
+    <slot name="head" />
+
     <script is:inline define:vars={{ forceTheme }}>
       function getPreferredColorScheme() {
         if (!window.matchMedia) {

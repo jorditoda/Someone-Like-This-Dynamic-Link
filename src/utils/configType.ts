@@ -25,6 +25,20 @@ export type TemplateConfig = {
         };
         content: string;
     };
+    support: {
+        seo: {
+            title: string;
+            description: string;
+        };
+        content: string;
+    };
+    deleteAccount: {
+        seo: {
+            title: string;
+            description: string;
+        };
+        content: string;
+    };
     cookiesPolicy: {
         seo: {
             title: string;
