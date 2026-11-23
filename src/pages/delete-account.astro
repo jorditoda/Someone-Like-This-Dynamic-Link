@@ -1,0 +1,13 @@
+---
+import ContentPage from "@modules/contentPage";
+import Layout from "Layout.astro";
+import defaultTemplateConfig from "utils/config";
+---
+
+<Layout {...defaultTemplateConfig} seo={defaultTemplateConfig.deleteAccount.seo}>
+  <ContentPage
+    client:load
+    config={defaultTemplateConfig}
+    content={defaultTemplateConfig.deleteAccount.content}
+  />
+</Layout>

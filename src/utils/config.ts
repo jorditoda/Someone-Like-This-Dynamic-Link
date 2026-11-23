@@ -195,7 +195,7 @@ const templateConfig: TemplateConfig = {
         {
           question: "What kind of items can I add in the game?",
           answer:
-            "We offer a 30-day return policy for unused and unopened items. If you are not satisfied with your purchase, please contact our customer support team to initiate a return. Refunds will be processed within 7-10 business days after we receive the returned item.",
+            "Anything you and your friends can find or do around you: from everyday objects to funny or imaginative challenges. You write the list.",
         },
          {
            question: "Is the app free?",
@@ -205,7 +205,7 @@ const templateConfig: TemplateConfig = {
            {
              question: "How can I report a problem or give feedback?",
              answer:
-               "To report problems or give feedback, you can use the support section within the app or email us at info@yapplic. We love hearing your suggestions and working to improve the 'Like This' experience.",
+               "To report problems or give feedback, you can use the support section within the app or email us at info@yapplic.com. We love hearing your suggestions and working to improve the 'Like This' experience.",
            },
       ],
     },
@@ -258,123 +258,149 @@ const templateConfig: TemplateConfig = {
   },
   privacyPolicy: {
     seo: {
-      title: "Privacy Policy - Like This",
-      description: "Privacy Policy",
+      title: "Privacy Policy - Someone Like This",
+      description: "How Someone Like This collects, uses and protects your data.",
     },
     content: `# Privacy Policy
 
-**Effective Date:** 17/12/2024
+**Effective date:** 23 November 2026
 
-## Introduction
+## Who we are
 
-This privacy policy applies to the Someone Like You app (hereby referred to as "Application") for mobile devices that was created by Jordi (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".
+Someone Like This (the "App") is a mobile game published by Yapplic ("we", "us"). We are the controller of the personal data described below. You can contact us at [info@yapplic.com](mailto:info@yapplic.com).
 
+## What data we collect and why
 
-Information Collection and Use
+**Account.** When you sign in with Apple or Google, we receive your email address, your name and your profile photo through Firebase Authentication. We use them to create and identify your account.
 
-The Application collects information when you download and use it. This information may include information such as
+**Game content.** The games you create or join (items, cards, progress and results) are stored so you can play. Only the members of a game can see it. There are no public games and no chat.
 
-Your device's Internet Protocol address (e.g. IP address)
-The pages of the Application that you visit, the time and date of your visit, the time spent on those pages
-The time spent on the Application
-The operating system you use on your mobile device
+**Background images.** If you upload a background image for a game, it is stored in Firebase Storage.
 
+**Purchases.** Subscriptions and in-app purchases are managed with RevenueCat. Payment is processed by Apple or Google. We never receive your card details.
 
+**Push notifications.** If you allow them, we use OneSignal to send you notifications about your games.
 
+**Ads.** The free version shows ads served by Google AdMob, which may use your device's advertising identifier. In the European Economic Area we ask for your consent (GDPR) before showing personalised ads, and you can change your choice later.
 
+**Analytics and crashes.** We use Firebase Analytics and Firebase Crashlytics to understand how the App is used and to fix errors. They may collect device information, app usage and crash reports.
 
+## Legal bases
 
-The Application does not gather precise information about the location of your mobile device.
+We process your data to provide the App (contract), to show ads and send optional notifications (your consent), and to keep the App secure and improve it (legitimate interest).
 
-The Application collects your device's location, which helps the Service Provider determine your approximate geographical location and make use of in below ways:
+## Third parties
 
-Geolocation Services: The Service Provider utilizes location data to provide features such as personalized content, relevant recommendations, and location-based services.
-Analytics and Improvements: Aggregated and anonymized location data helps the Service Provider to analyze user behavior, identify trends, and improve the overall performance and functionality of the Application.
-Third-Party Services: Periodically, the Service Provider may transmit anonymized location data to external services. These services assist them in enhancing the Application and optimizing their offerings.
+We share data only with the services that help us run the App. Each one has its own privacy policy:
 
+- [Google and Firebase](https://policies.google.com/privacy) ([Firebase privacy](https://firebase.google.com/support/privacy))
+- [Google AdMob](https://support.google.com/admob/answer/6128543)
+- [RevenueCat](https://www.revenuecat.com/privacy)
+- [OneSignal](https://onesignal.com/privacy_policy)
+- [Apple](https://www.apple.com/legal/privacy/) and [Google Play](https://policies.google.com/privacy) (sign-in and payments)
 
+We do not sell your personal data. We may disclose data if the law requires it.
 
+## Retention
 
-The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.
+We keep your account data while your account is active. When you delete your account, we delete the data linked to it as described in [Delete account](/delete-account). Some data may remain for a limited time in backups, or where the law requires us to keep it.
 
+## Deleting your account
 
+You can delete your account in the App (Profile, then Delete account) or by following the steps on [/delete-account](/delete-account).
 
+## Your rights
 
-For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.
+If you are in the EEA or the UK, you have the right to access, correct, delete, restrict or port your data, and to object to its processing or withdraw your consent at any time. To use these rights, write to [info@yapplic.com](mailto:info@yapplic.com). You can also complain to your local data protection authority.
 
+## Children
 
-Third Party Access
+The App is not intended for children under 13, and we do not knowingly collect their data. If you think a child has given us personal data, contact us and we will delete it.
 
-Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.
+## Changes
 
+We may update this policy. The effective date at the top shows the latest version. If a change is important, we will tell you in the App.
 
+## Contact
 
+Questions about privacy: [info@yapplic.com](mailto:info@yapplic.com).
+`,
+  },
+  support: {
+    seo: {
+      title: "Support - Someone Like This",
+      description: "Help and contact for Someone Like This.",
+    },
+    content: `# Support
 
-Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:
+Need help with Someone Like This? Write to us at [info@yapplic.com](mailto:info@yapplic.com) and we will get back to you as soon as we can.
 
-Google Play Services
-AdMob
-Google Analytics for Firebase
-Firebase Crashlytics
+## Frequently asked questions
 
+### How do I join a game from a link?
 
+Tap the invitation link you received. If the app is installed, it opens the game. If it is not installed, install it from the App Store or Google Play and then tap the link again.
 
+### How do I join a game with a code?
 
-The Service Provider may disclose User Provided and Automatically Collected Information:
+Open the app and enter the 6-letter code that came with the invitation.
 
-as required by law, such as to comply with a subpoena, or similar legal process;
-when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;
-with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.
+### The link does not open the app
 
+Open the link in your phone's browser (Safari or Chrome) instead of inside another app, then tap "I already have the app". Make sure the app is installed and up to date. If it still fails, enter the 6-letter code in the app.
 
+### How do I restore my purchases?
 
+Sign in with the same Apple or Google account you used to buy, and use the restore purchases option in the app. If your subscription does not appear, email us.
 
-Opt-Out Rights
+### How do I delete my account?
 
-You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.
+Follow the steps on [Delete account](/delete-account).
 
+### How do I report a problem?
 
-Data Retention Policy
+Email [info@yapplic.com](mailto:info@yapplic.com) with a short description, your device model and the app version.
 
-The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like them to delete User Provided Data that you have provided via the Application, please contact them at info@yapplic.com and they will respond in a reasonable time.
+## More information
 
+- [Privacy policy](/privacy-policy)
+- [Terms and conditions](/terms-and-conditions)
+`,
+  },
+  deleteAccount: {
+    seo: {
+      title: "Delete account - Someone Like This",
+      description: "How to delete your Someone Like This account and data.",
+    },
+    content: `# Delete your account
 
-Children
+You can delete your Someone Like This account and the data linked to it at any time.
 
-The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.
+## In the app
 
+1. Open Someone Like This and sign in.
+2. Go to your profile.
+3. Tap **Delete account** and confirm.
 
+## If you cannot access the app
 
+Email [info@yapplic.com](mailto:info@yapplic.com) from the address linked to your account, with the subject "Delete my account". We may ask you to confirm your identity. We will reply within 30 days.
 
-The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (info@yapplic.com) so that they will be able to take the necessary actions.
+## What is deleted
 
+- Your account (email, name, profile photo and sign-in link to Apple or Google).
+- Your game data linked to your account.
+- Background images you uploaded.
 
-Security
+## What may be kept
 
-The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.
+- Purchase records held by Apple, Google and RevenueCat, according to their own policies and legal obligations.
+- Aggregated and anonymous analytics, which no longer identify you.
+- Backups, until they are overwritten, and data we must keep by law.
 
+Deleting your account does not cancel an active subscription. Cancel it in your App Store or Google Play subscription settings.
 
-Changes
-
-This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
-
-
-
-
-This privacy policy is effective as of 2024-09-25
-
-
-Your Consent
-
-By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.
-
-
-Contact Us
-
-If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at info@yapplic.com.
-
-This privacy policy page was generated by App Privacy Policy Generator
-
+See also our [privacy policy](/privacy-policy).
 `,
   },
   cookiesPolicy: {
