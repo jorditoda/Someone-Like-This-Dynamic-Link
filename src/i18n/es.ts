@@ -117,7 +117,7 @@ export default (name: string): Dict => ({
         },
         {
           q: "¿Cuánta gente puede jugar?",
-          a: "Está pensada para grupos de amigos y familia, desde unas pocas personas hasta una mesa entera. Comparte el enlace o el código con quien juegue.",
+          a: "No hay límite. Comparte el enlace o el código con todos los que jueguen, desde unos pocos amigos hasta una mesa entera.",
         },
         {
           q: "¿Es gratis?",
