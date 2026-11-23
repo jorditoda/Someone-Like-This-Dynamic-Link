@@ -80,7 +80,7 @@ function Footer() {
               </motion.a>
             )}
           </div>
-          <div className="flex gap-4 mt-8 mb-4 md:m-0">
+          <div className="flex flex-wrap gap-4 mt-8 mb-4 md:m-0">
             {legalLinks.termsAndConditions && (
               <motion.a
                 variants={{
@@ -120,6 +120,28 @@ function Footer() {
                 Cookies policy
               </motion.a>
             )}
+            <motion.a
+              variants={{
+                hidden: { opacity: 0, scale: 0.4 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{ delay: 0.9 }}
+              className="font-bold text-primary hover:text-primary/50 lg:whitespace-nowrap"
+              href="/support"
+            >
+              Support
+            </motion.a>
+            <motion.a
+              variants={{
+                hidden: { opacity: 0, scale: 0.4 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{ delay: 1 }}
+              className="font-bold text-primary hover:text-primary/50 lg:whitespace-nowrap"
+              href="/delete-account"
+            >
+              Delete account
+            </motion.a>
           </div>
           <motion.p
             variants={{
