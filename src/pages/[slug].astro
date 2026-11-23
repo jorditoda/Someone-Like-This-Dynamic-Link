@@ -1,0 +1,15 @@
+---
+import OccasionPage from "../components/OccasionPage.astro";
+import { OCCASIONS } from "../data/occasions";
+
+// Una pàgina per ocasió amb `pages` a src/data/occasions.ts.
+export function getStaticPaths() {
+  return OCCASIONS.filter((o) => o.pages).map((o) => ({
+    params: { slug: o.pages!.en.slug },
+    props: { id: o.id },
+  }));
+}
+const { id } = Astro.props;
+---
+
+<OccasionPage lang="en" {id} />

@@ -1,0 +1,34 @@
+---
+import { appStoreUrl, playStoreUrl } from "../site";
+import { getDict, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  class?: string;
+  /** Alçada dels botons (classe de Tailwind). */
+  size?: string;
+}
+const { lang, class: className = "", size = "h-12" } = Astro.props;
+const d = getDict(lang);
+---
+
+<div class:list={["flex flex-wrap items-center gap-3", className]}>
+  <a href={appStoreUrl(lang)} rel="noopener" class="inline-flex min-h-11 items-center">
+    <img
+      src="/stores/app-store.svg"
+      alt={d.stores.appStoreAlt}
+      class={`${size} w-auto`}
+      height="48"
+      width="148"
+    />
+  </a>
+  <a href={playStoreUrl(lang)} rel="noopener" class="inline-flex min-h-11 items-center">
+    <img
+      src="/stores/google-play.svg"
+      alt={d.stores.googlePlayAlt}
+      class={`${size} w-auto`}
+      height="48"
+      width="162"
+    />
+  </a>
+</div>

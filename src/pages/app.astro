@@ -1,9 +1,15 @@
 ---
-import AppRedirectionPage from "@modules/app"
-import Layout from "Layout.astro";
-import defaultTemplateConfig from "utils/config";
+import AppRedirectionPage from "@modules/app";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { appStoreUrl, playStoreUrl } from "../site";
 ---
 
-<Layout {...defaultTemplateConfig}>
-  <AppRedirectionPage client:load config={defaultTemplateConfig} />
-</Layout>
+<BaseLayout
+  title="Someone Like This"
+  description="Download Someone Like This."
+  path="/app"
+  chrome={false}
+  noindex
+>
+  <AppRedirectionPage client:load config={{ appStoreLink: appStoreUrl(), googlePlayLink: playStoreUrl() }} />
+</BaseLayout>

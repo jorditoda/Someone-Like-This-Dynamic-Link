@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMobileOperatingSystem } from "utils/common";
-import type { TemplateConfig } from "utils/configType";
+type TemplateConfig = { appStoreLink?: string; googlePlayLink?: string };
 
 interface Props {
   config: TemplateConfig;
@@ -100,7 +100,7 @@ function InvitePage({ config }: Props) {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-10 text-center">
       <div className="w-full max-w-sm flex flex-col items-center gap-6">
-        <img src="/logo.svg" alt="Someone Like This" className="h-20 w-20" />
+        <img src="/icon-192.png" alt="Someone Like This" className="h-20 w-20 rounded-2xl" width="80" height="80" />
         <h1 className="text-3xl font-bold">{t.title}</h1>
         <p className="opacity-80">{t.about}</p>
 

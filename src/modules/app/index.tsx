@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getMobileOperatingSystem } from "utils/common";
-import type { TemplateConfig } from "utils/configType";
+type TemplateConfig = { appStoreLink?: string; googlePlayLink?: string };
 
 interface Props {
   config: TemplateConfig;

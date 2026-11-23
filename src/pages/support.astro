@@ -1,13 +1,6 @@
 ---
-import ContentPage from "@modules/contentPage";
-import Layout from "Layout.astro";
-import defaultTemplateConfig from "utils/config";
+import LegalPage from "../components/LegalPage.astro";
+import { legal } from "../data/legal";
 ---
 
-<Layout {...defaultTemplateConfig} seo={defaultTemplateConfig.support.seo}>
-  <ContentPage
-    client:load
-    config={defaultTemplateConfig}
-    content={defaultTemplateConfig.support.content}
-  />
-</Layout>
+<LegalPage path="/support" seo={legal.support.seo} content={legal.support.content} />

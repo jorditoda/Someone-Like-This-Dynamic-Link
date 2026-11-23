@@ -1,0 +1,24 @@
+---
+import { TESTIMONIALS } from "../../data/testimonials";
+import type { Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+  title?: string;
+}
+const { lang, title = "Reviews" } = Astro.props;
+---
+
+<section id="reviews" class="mx-auto max-w-screen-lg px-4 py-16">
+  <h2 class="text-3xl font-extrabold md:text-4xl">{title}</h2>
+  <ul class="mt-8 grid gap-4 md:grid-cols-3">
+    {
+      TESTIMONIALS.map((t) => (
+        <li class="rounded-box bg-base-200 p-5">
+          <blockquote>{t.text[lang] ?? t.text.en}</blockquote>
+          <p class="mt-3 font-bold">{t.name}, {t.store}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,57 @@
+---
+import { SITE } from "../site";
+import { getDict, homePath, type Lang } from "../i18n";
+import LangSwitch from "./LangSwitch.astro";
+
+interface Props {
+  lang: Lang;
+  alternates?: Partial<Record<Lang, string>>;
+}
+const { lang, alternates } = Astro.props;
+const d = getDict(lang);
+const legal = [
+  { href: "/support", title: d.footer.support },
+  { href: "/privacy-policy", title: d.footer.privacy },
+  { href: "/terms-and-conditions", title: d.footer.terms },
+  { href: "/cookies-policy", title: d.footer.cookies },
+  { href: "/delete-account", title: d.footer.deleteAccount },
+];
+const socials = Object.entries(SITE.socials) as [string, string][];
+---
+
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-screen-lg px-4 py-10">
+    <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+      <div>
+        <a href={homePath(lang)} class="text-xl font-extrabold">{SITE.name}</a>
+        <p class="mt-1 opacity-80">{d.footer.tagline}</p>
+      </div>
+      <nav aria-label="Legal" class="flex flex-col md:items-end">
+        {
+          legal.map((l) => (
+            <a href={l.href} class="inline-flex min-h-11 items-center underline-offset-4 hover:underline">
+              {l.title}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-6">
+      <LangSwitch lang={lang} alternates={alternates} />
+      {
+        socials.length > 0 && (
+          <ul class="flex gap-3">
+            {socials.map(([name, href]) => (
+              <li>
+                <a href={href} rel="noopener" class="inline-flex min-h-11 items-center capitalize underline-offset-4 hover:underline">
+                  {name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      <p class="text-sm opacity-80">{d.footer.rights} © {new Date().getFullYear()} {SITE.company}</p>
+    </div>
+  </div>
+</footer>

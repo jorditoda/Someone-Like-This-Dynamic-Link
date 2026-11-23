@@ -1,0 +1,39 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import type { Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  /** Nom de la captura, p. ex. "01-bingo". */
+  name: string;
+  alt: string;
+  /** Imatge del hero: es carrega ja i amb prioritat alta. */
+  priority?: boolean;
+  sizes?: string;
+  class?: string;
+}
+
+// Captures a src/assets/screenshots/<lang>/<name>.png. Per substituir-les per
+// captures reals només cal sobreescriure els fitxers (mateix nom).
+const shots = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/screenshots/*/*.png",
+  { eager: true },
+);
+const { lang, name, alt, priority = false, sizes = "(min-width: 768px) 320px, 70vw", class: className = "" } = Astro.props;
+const img = shots[`../assets/screenshots/${lang}/${name}.png`]?.default;
+if (!img) throw new Error(`Captura no trobada: ${lang}/${name}`);
+---
+
+<Picture
+  src={img}
+  alt={alt}
+  formats={["avif", "webp"]}
+  fallbackFormat="webp"
+  widths={[320, 480, 640]}
+  sizes={sizes}
+  loading={priority ? "eager" : "lazy"}
+  fetchpriority={priority ? "high" : "auto"}
+  decoding={priority ? "sync" : "async"}
+  class:list={["h-auto w-full rounded-[2rem] shadow-xl", className]}
+/>

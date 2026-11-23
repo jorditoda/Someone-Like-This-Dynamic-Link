@@ -1,0 +1,39 @@
+---
+import { LANGS, getDict, homePath, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  alternates?: Partial<Record<Lang, string>>;
+  class?: string;
+}
+const { lang, alternates, class: className = "" } = Astro.props;
+const d = getDict(lang);
+const targets = Object.fromEntries(
+  LANGS.map((l) => [l, alternates?.[l] ?? homePath(l)]),
+) as Record<Lang, string>;
+---
+
+<nav aria-label={d.nav.language} class={className}>
+  <ul class="flex items-center gap-1">
+    {
+      LANGS.map((l) => (
+        <li>
+          <a
+            href={targets[l]}
+            hreflang={l}
+            lang={l}
+            title={getDict(l).label}
+            aria-label={getDict(l).label}
+            aria-current={l === lang ? "true" : undefined}
+            class:list={[
+              "inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-2 text-sm font-bold uppercase",
+              l === lang ? "bg-primary text-primary-content" : "hover:bg-base-200",
+            ]}
+          >
+            {l}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

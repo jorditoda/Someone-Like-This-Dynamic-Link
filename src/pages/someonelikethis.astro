@@ -1,18 +1,15 @@
 ---
 import InvitePage from "@modules/invite";
-import Layout from "Layout.astro";
-import defaultTemplateConfig from "utils/config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { appStoreUrl, playStoreUrl } from "../site";
 
-const seo = {
-  title: "Uneix-te a la meva partida de Someone Like This",
-  description:
-    "Toca l'enllaç per unir-te a la partida. Join my game of Someone Like This.",
-};
+const title = "Uneix-te a la meva partida de Someone Like This";
+const description =
+  "Toca l'enllaç per unir-te a la partida. Join my game of Someone Like This.";
 ---
 
-<Layout {...defaultTemplateConfig} seo={seo} logo="/screenshots/3.png">
+<BaseLayout title={title} description={description} path="/someonelikethis" chrome={false} noindex>
   <Fragment slot="head">
-    <meta name="robots" content="noindex" />
     <meta name="apple-itunes-app" content="app-id=6739965531" />
     <!-- Smart App Banner: l'app-argument ha de ser la URL actual (amb code o gameId). -->
     <script is:inline>
@@ -24,5 +21,5 @@ const seo = {
         );
     </script>
   </Fragment>
-  <InvitePage client:only="react" config={defaultTemplateConfig} />
-</Layout>
+  <InvitePage client:only="react" config={{ appStoreLink: appStoreUrl(), googlePlayLink: playStoreUrl() }} />
+</BaseLayout>

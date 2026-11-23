@@ -1,12 +1,6 @@
 ---
-import TermsAndConditionsPage from "@modules/termsAndConditions";
-import Layout from "Layout.astro";
-import defaultTemplateConfig from "utils/config";
+import LegalPage from "../components/LegalPage.astro";
+import { legal } from "../data/legal";
 ---
 
-<Layout
-  {...defaultTemplateConfig}
-  seo={defaultTemplateConfig.termsAndConditions?.seo}
->
-  <TermsAndConditionsPage client:load config={defaultTemplateConfig} />
-</Layout>
+<LegalPage path="/terms-and-conditions" seo={legal.termsAndConditions.seo} content={legal.termsAndConditions.content} />
