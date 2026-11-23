@@ -1,0 +1,28 @@
+---
+import InvitePage from "@modules/invite";
+import Layout from "Layout.astro";
+import defaultTemplateConfig from "utils/config";
+
+const seo = {
+  title: "Uneix-te a la meva partida de Someone Like This",
+  description:
+    "Toca l'enllaç per unir-te a la partida. Join my game of Someone Like This.",
+};
+---
+
+<Layout {...defaultTemplateConfig} seo={seo} logo="/screenshots/3.png">
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <meta name="apple-itunes-app" content="app-id=6739965531" />
+    <!-- Smart App Banner: l'app-argument ha de ser la URL actual (amb gameId). -->
+    <script is:inline>
+      document
+        .querySelector('meta[name="apple-itunes-app"]')
+        .setAttribute(
+          "content",
+          "app-id=6739965531, app-argument=" + window.location.href,
+        );
+    </script>
+  </Fragment>
+  <InvitePage client:only="react" config={defaultTemplateConfig} />
+</Layout>
