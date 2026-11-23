@@ -389,7 +389,7 @@ Email [info@yapplic.com](mailto:info@yapplic.com) from the address linked to you
 ## What is deleted
 
 - Your account (email, name, profile photo and sign-in link to Apple or Google).
-- Your game data linked to your account.
+- Your user data stored in our database (Firestore) and the game data linked to your account.
 - Background images you uploaded.
 
 ## What may be kept
