@@ -1,20 +1,11 @@
 {
   "applinks": {
-    "apps": [],
     "details": [
       {
-        "appIDs": [
-          "5TBPWQQX3G.com.stormfkrs.likeThis"
-        ],
-        "paths": [
-          "/someonelikethis"
-        ],
+        "appIDs": ["5TBPWQQX3G.com.stormfkrs.likeThis"],
         "components": [
-          {
-            "/": "/someonelikethis/*",
-            "?": { "gameId": "*" },
-            "comment": "Matches any URL with a path that starts with /someonelikethis/ and that has a query item with name 'gameId' with value."
-            }
+          { "/": "/someonelikethis", "?": { "gameId": "?*" }, "comment": "Invitació a una partida" },
+          { "/": "/someonelikethis/", "?": { "gameId": "?*" }, "comment": "Mateixa invitació amb barra final" }
         ]
       }
     ]
