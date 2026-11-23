@@ -10,7 +10,7 @@ type Lang = "ca" | "es" | "en";
 
 const TEXTS: Record<
   Lang,
-  { title: string; about: string; open: string; help: string; noCode: string }
+  { title: string; about: string; open: string; help: string; codeLabel: string; copy: string; copied: string }
 > = {
   ca: {
     title: "T'han convidat a una partida",
@@ -18,7 +18,9 @@ const TEXTS: Record<
       "Someone Like This és un joc on tu i els teus amics busqueu objectes de la vida real.",
     open: "Ja tinc l'app: obrir la partida",
     help: "Després d'instal·lar-la, torna a tocar l'enllaç o entra el codi de 6 lletres que t'han enviat.",
-    noCode: "Aquest enllaç no porta cap partida. Demana a qui t'ha convidat que te'l torni a enviar.",
+    codeLabel: "Codi de la partida",
+    copy: "Copiar codi",
+    copied: "Copiat!",
   },
   es: {
     title: "Te han invitado a una partida",
@@ -26,7 +28,9 @@ const TEXTS: Record<
       "Someone Like This es un juego en el que tú y tus amigos buscáis objetos de la vida real.",
     open: "Ya tengo la app: abrir la partida",
     help: "Después de instalarla, vuelve a tocar el enlace o introduce el código de 6 letras que te han enviado.",
-    noCode: "Este enlace no incluye ninguna partida. Pide a quien te invitó que te lo envíe de nuevo.",
+    codeLabel: "Código de la partida",
+    copy: "Copiar código",
+    copied: "¡Copiado!",
   },
   en: {
     title: "You've been invited to a game",
@@ -34,9 +38,13 @@ const TEXTS: Record<
       "Someone Like This is a game where you and your friends hunt for real-life items.",
     open: "I already have the app: open the game",
     help: "After installing it, tap the link again or enter the 6-letter code you were sent.",
-    noCode: "This link has no game in it. Ask whoever invited you to send it again.",
+    codeLabel: "Game code",
+    copy: "Copy code",
+    copied: "Copied!",
   },
 };
+
+const CODE_RE = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
 
 function detectLang(): Lang {
   const lang = (navigator.language || "en").toLowerCase();
@@ -48,9 +56,18 @@ function detectLang(): Lang {
 function InvitePage({ config }: Props) {
   const { appStoreLink, googlePlayLink } = config;
   const [lang] = useState<Lang>(detectLang);
-  const [gameId] = useState(() =>
-    new URLSearchParams(window.location.search).get("gameId")?.trim(),
-  );
+  const [params] = useState(() => {
+    const q = new URLSearchParams(window.location.search);
+    const raw = q.get("code")?.trim().toUpperCase();
+    return {
+      // El codi només es mostra si és vàlid.
+      code: raw && CODE_RE.test(raw) ? raw : undefined,
+      gameId: q.get("gameId")?.trim() || undefined,
+      search: window.location.search,
+    };
+  });
+  const { code, gameId } = params;
+  const [copied, setCopied] = useState(false);
   const [os, setOs] = useState<string | undefined>();
   const t = TEXTS[lang];
 
@@ -59,9 +76,19 @@ function InvitePage({ config }: Props) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const openUrl = gameId
-    ? `/someonelikethis?gameId=${encodeURIComponent(gameId)}`
-    : undefined;
+  // Mateixa URL i mateixos paràmetres (format nou ?code= o antic ?gameId=).
+  const openUrl =
+    code || gameId ? `/someonelikethis${params.search}` : undefined;
+
+  const copyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(code!);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* sense portapapers: el codi continua visible */
+    }
+  };
 
   // El sistema detectat va primer i destacat; l'altre es mostra sempre, atenuat.
   const stores = [
@@ -95,12 +122,22 @@ function InvitePage({ config }: Props) {
           ))}
         </div>
 
-        {openUrl ? (
+        {code && (
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-sm opacity-70">{t.codeLabel}</span>
+            <span className="text-5xl font-mono font-bold tracking-widest">
+              {code}
+            </span>
+            <button type="button" className="btn btn-outline btn-sm" onClick={copyCode}>
+              {copied ? t.copied : t.copy}
+            </button>
+          </div>
+        )}
+
+        {openUrl && (
           <a href={openUrl} className="btn btn-primary w-full">
             {t.open}
           </a>
-        ) : (
-          <p className="text-sm opacity-80">{t.noCode}</p>
         )}
 
         <p className="text-sm opacity-70">{t.help}</p>

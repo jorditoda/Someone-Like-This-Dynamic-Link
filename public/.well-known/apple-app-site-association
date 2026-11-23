@@ -2,10 +2,38 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["5TBPWQQX3G.com.stormfkrs.likeThis"],
+        "appIDs": [
+          "5TBPWQQX3G.com.stormfkrs.likeThis"
+        ],
         "components": [
-          { "/": "/someonelikethis", "?": { "gameId": "?*" }, "comment": "Invitació a una partida" },
-          { "/": "/someonelikethis/", "?": { "gameId": "?*" }, "comment": "Mateixa invitació amb barra final" }
+          {
+            "/": "/someonelikethis",
+            "?": {
+              "code": "??????"
+            },
+            "comment": "Invitació amb codi (format nou)"
+          },
+          {
+            "/": "/someonelikethis/",
+            "?": {
+              "code": "??????"
+            },
+            "comment": "Codi, amb barra final"
+          },
+          {
+            "/": "/someonelikethis",
+            "?": {
+              "gameId": "?*"
+            },
+            "comment": "Invitació antiga amb gameId"
+          },
+          {
+            "/": "/someonelikethis/",
+            "?": {
+              "gameId": "?*"
+            },
+            "comment": "gameId, amb barra final"
+          }
         ]
       }
     ]
