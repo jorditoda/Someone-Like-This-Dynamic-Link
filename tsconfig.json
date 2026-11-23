@@ -6,9 +6,20 @@
     "resolveJsonModule": true,
     "baseUrl": "./src",
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@styles/*": ["styles/*"],
-      "@components/*": ["components/*"]
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ]
     }
-  }
+  },
+  "exclude": [
+    "dist",
+    "docs",
+    "node_modules"
+  ]
 }

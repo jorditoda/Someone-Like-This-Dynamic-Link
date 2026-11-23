@@ -17,18 +17,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.2
         version: 5.1.2(astro@4.16.7(rollup@4.24.2)(sass@1.80.4)(typescript@5.5.2))(tailwindcss@3.4.14)
-      '@heroicons/react':
-        specifier: ^2.1.4
-        version: 2.1.5(react@18.3.1)
       astro:
         specifier: ^4.16.7
         version: 4.16.7(rollup@4.24.2)(sass@1.80.4)(typescript@5.5.2)
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      framer-motion:
-        specifier: ^11.2.13
-        version: 11.11.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -38,12 +29,9 @@ importers:
       react-markdown:
         specifier: ^9.0.1
         version: 9.0.1(@types/react@18.3.3)(react@18.3.1)
-      swiper:
-        specifier: ^11.1.8
-        version: 11.1.14
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
+      sharp:
+        specifier: 0.33.4
+        version: 0.33.4
     devDependencies:
       '@tailwindcss/typography':
         specifier: ^0.5.13
@@ -56,16 +44,13 @@ importers:
         version: 18.3.0
       daisyui:
         specifier: ^4.12.8
-        version: 4.12.13(postcss@8.4.38)
+        version: 4.12.13(postcss@8.4.47)
       prettier:
         specifier: ^3.2.5
         version: 3.3.3
       prettier-plugin-astro:
         specifier: ^0.14.0
         version: 0.14.1
-      sass:
-        specifier: ^1.77.6
-        version: 1.80.4
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.14
@@ -483,11 +468,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
-
-  '@heroicons/react@2.1.5':
-    resolution: {integrity: sha512-FuzFN+BsHa+7OxbvAERtgBTNeZpUjgM/MIizfVkSCL2/edriN0Hx/DWRCR//aPYwO5QX/YlgLGXk+E3PcfZwjA==}
-    peerDependencies:
-      react: '>= 16'
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -1320,20 +1300,6 @@ packages:
 
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
-
-  framer-motion@11.11.10:
-    resolution: {integrity: sha512-061Bt1jL/vIm+diYIiA4dP/Yld7vD47ROextS7ESBW5hr4wQFhxB5D5T5zAc3c/5me3cOa+iO5LqhA38WDln/A==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0
-      react-dom: ^18.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -2256,10 +2222,6 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  swiper@11.1.14:
-    resolution: {integrity: sha512-VbQLQXC04io6AoAjIUWuZwW4MSYozkcP9KjLdrsG/00Q/yiwvhz9RQyt0nHXV10hi9NVnDNy1/wv7Dzq1lkOCQ==}
-    engines: {node: '>= 4.7.0'}
-
   tailwindcss@3.4.14:
     resolution: {integrity: sha512-IcSvOcTRcUtQQ7ILQL5quRDg7Xs93PdJEk1ZLbhhvJc7uj/OAhYOnruEiwnGgBvUtaUAJ8/mhSw1o8L2jCiENA==}
     engines: {node: '>=14.0.0'}
@@ -3089,10 +3051,6 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@heroicons/react@2.1.5(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
       '@img/sharp-libvips-darwin-arm64': 1.0.2
@@ -3265,6 +3223,7 @@ snapshots:
       '@parcel/watcher-win32-arm64': 2.4.1
       '@parcel/watcher-win32-ia32': 2.4.1
       '@parcel/watcher-win32-x64': 2.4.1
+    optional: true
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -3738,13 +3697,11 @@ snapshots:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    optional: true
 
   color@4.2.3:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
-    optional: true
 
   comma-separated-tokens@2.0.3: {}
 
@@ -3773,12 +3730,12 @@ snapshots:
 
   culori@3.3.0: {}
 
-  daisyui@4.12.13(postcss@8.4.38):
+  daisyui@4.12.13(postcss@8.4.47):
     dependencies:
       css-selector-tokenizer: 0.8.0
       culori: 3.3.0
       picocolors: 1.0.1
-      postcss-js: 4.0.1(postcss@8.4.38)
+      postcss-js: 4.0.1(postcss@8.4.47)
     transitivePeerDependencies:
       - postcss
 
@@ -3796,10 +3753,10 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  detect-libc@1.0.3: {}
-
-  detect-libc@2.0.3:
+  detect-libc@1.0.3:
     optional: true
+
+  detect-libc@2.0.3: {}
 
   deterministic-object-hash@2.0.2:
     dependencies:
@@ -3930,13 +3887,6 @@ snapshots:
       signal-exit: 4.1.0
 
   fraction.js@4.3.7: {}
-
-  framer-motion@11.11.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      tslib: 2.6.3
-    optionalDependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   fsevents@2.3.3:
     optional: true
@@ -4124,7 +4074,8 @@ snapshots:
 
   http-cache-semantics@4.1.1: {}
 
-  immutable@4.3.7: {}
+  immutable@4.3.7:
+    optional: true
 
   import-meta-resolve@4.1.0: {}
 
@@ -4137,8 +4088,7 @@ snapshots:
       is-alphabetical: 2.0.1
       is-decimal: 2.0.1
 
-  is-arrayish@0.3.2:
-    optional: true
+  is-arrayish@0.3.2: {}
 
   is-binary-path@2.1.0:
     dependencies:
@@ -4666,7 +4616,8 @@ snapshots:
     dependencies:
       '@types/nlcst': 2.0.3
 
-  node-addon-api@7.1.1: {}
+  node-addon-api@7.1.1:
+    optional: true
 
   node-releases@2.0.18: {}
 
@@ -4787,6 +4738,11 @@ snapshots:
     dependencies:
       camelcase-css: 2.0.1
       postcss: 8.4.38
+
+  postcss-js@4.0.1(postcss@8.4.47):
+    dependencies:
+      camelcase-css: 2.0.1
+      postcss: 8.4.47
 
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
@@ -5066,6 +5022,7 @@ snapshots:
       chokidar: 4.0.1
       immutable: 4.3.7
       source-map-js: 1.2.0
+    optional: true
 
   scheduler@0.23.2:
     dependencies:
@@ -5107,7 +5064,6 @@ snapshots:
       '@img/sharp-wasm32': 0.33.4
       '@img/sharp-win32-ia32': 0.33.4
       '@img/sharp-win32-x64': 0.33.4
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -5129,7 +5085,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-    optional: true
 
   sisteransi@1.0.5: {}
 
@@ -5202,8 +5157,6 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swiper@11.1.14: {}
-
   tailwindcss@3.4.14:
     dependencies:
       '@alloc/quick-lru': 5.2.0
@@ -5257,7 +5210,8 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.2
 
-  tslib@2.6.3: {}
+  tslib@2.6.3:
+    optional: true
 
   type-fest@4.26.1: {}
 

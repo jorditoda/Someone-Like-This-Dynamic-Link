@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+import { SITE } from "../site";
+import { getDict, homePath, type Lang } from "../i18n";
+import LangSwitch from "./LangSwitch.astro";
+
+interface Props {
+  lang: Lang;
+  alternates?: Partial<Record<Lang, string>>;
+}
+const { lang, alternates } = Astro.props;
+const d = getDict(lang);
+const home = homePath(lang);
+const links = [
+  { href: `${home}#how-it-works`, title: d.nav.how },
+  { href: `${home}#occasions`, title: d.nav.occasions },
+  { href: `${home}#pricing`, title: d.nav.pricing },
+  { href: `${home}#faq`, title: d.nav.faq },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-base-300 bg-base-100/95 backdrop-blur">
+  <div class="mx-auto flex max-w-screen-lg items-center justify-between gap-2 px-4 py-2">
+    <a href={home} class="flex min-h-11 items-center gap-2 font-extrabold" aria-label={d.nav.home}>
+      <Image src={logo} alt="" width={36} height={36} class="h-9 w-9 rounded-xl" />
+      <span class="text-lg">{SITE.name}</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Main">
+      {
+        links.map((l) => (
+          <a href={l.href} class="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold hover:bg-base-200">
+            {l.title}
+          </a>
+        ))
+      }
+      <LangSwitch lang={lang} alternates={alternates} class="ml-2" />
+      <a href={`${home}#download`} class="btn btn-primary ml-2 min-h-11 h-11">{d.nav.cta}</a>
+    </nav>
+
+    <details id="mobile-menu" class="relative md:hidden">
+      <summary
+        class="flex h-11 w-11 items-center justify-center rounded-full hover:bg-base-200"
+        aria-label={d.nav.menu}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </summary>
+      <div class="absolute right-0 top-12 flex w-64 flex-col gap-1 rounded-box border border-base-300 bg-base-100 p-3 shadow-xl">
+        {
+          links.map((l) => (
+            <a href={l.href} class="flex min-h-11 items-center rounded-full px-3 font-semibold hover:bg-base-200">
+              {l.title}
+            </a>
+          ))
+        }
+        <LangSwitch lang={lang} alternates={alternates} class="px-1" />
+        <a href={`${home}#download`} class="btn btn-primary mt-1">{d.nav.cta}</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<script is:inline>
+  // Tanca el menú mòbil en tocar un enllaç o amb Escape.
+  (function () {
+    var m = document.getElementById("mobile-menu");
+    if (!m) return;
+    m.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) m.removeAttribute("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") m.removeAttribute("open");
+    });
+  })();
+</script>

@@ -1,0 +1,227 @@
+---
+import { SITE, appStoreUrl, playStoreUrl } from "../../site";
+import { getDict, homePath, pagePath, absoluteUrl, LANGS, type Lang } from "../../i18n";
+import { OCCASIONS } from "../../data/occasions";
+import { TESTIMONIALS } from "../../data/testimonials";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StoreButtons from "../StoreButtons.astro";
+import Shot from "../Shot.astro";
+import Testimonials from "./Testimonials.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = getDict(lang);
+const h = d.home;
+
+const alternates = Object.fromEntries(LANGS.map((l) => [l, homePath(l)])) as Record<Lang, string>;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: SITE.name,
+    description: h.seo.description,
+    applicationCategory: "GameApplication",
+    operatingSystem: "iOS, Android",
+    inLanguage: "en",
+    url: absoluteUrl(homePath(lang)),
+    image: absoluteUrl("/icon-512.png"),
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+    installUrl: [appStoreUrl(lang), playStoreUrl(lang)],
+    publisher: { "@type": "Organization", name: SITE.company, url: SITE.companyUrl },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE.company,
+    url: SITE.companyUrl,
+    email: SITE.contactEmail,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: h.faq.items.map((i) => ({
+      "@type": "Question",
+      name: i.q,
+      acceptedAnswer: { "@type": "Answer", text: i.a },
+    })),
+  },
+];
+
+const sectionTitle = "text-3xl font-extrabold md:text-4xl";
+---
+
+<BaseLayout title={h.seo.title} description={h.seo.description} lang={lang} path={homePath(lang)} alternates={alternates} jsonLd={jsonLd}>
+  <Fragment slot="head">
+    <meta name="apple-itunes-app" content={`app-id=${SITE.appStoreId}`} />
+  </Fragment>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="bg-base-200">
+      <div class="mx-auto grid max-w-screen-lg items-center gap-10 px-4 py-12 md:grid-cols-2 md:py-20">
+        <div>
+          <h1 class="text-4xl font-extrabold leading-tight md:text-5xl">{h.hero.h1}</h1>
+          <p class="mt-4 text-lg opacity-90">{h.hero.sub}</p>
+          <StoreButtons lang={lang} class="mt-6" />
+          <p class="mt-3 text-sm opacity-80">{h.hero.storesNote}</p>
+        </div>
+        <div class="mx-auto w-full max-w-[18rem] md:max-w-xs">
+          <div class="aspect-[1320/2100] overflow-hidden rounded-[2rem] shadow-xl">
+            <Shot lang={lang} name="01-bingo" alt={d.occasion.shotAlt} priority class="!h-full !rounded-none !shadow-none object-cover object-top" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Com funciona -->
+    <section id="how-it-works" class="mx-auto max-w-screen-lg px-4 py-16">
+      <h2 class={sectionTitle}>{h.how.title}</h2>
+      <p class="mt-2 opacity-80">{h.how.intro}</p>
+      <ol class="mt-10 grid gap-10 md:grid-cols-3">
+        {
+          h.how.steps.map((s, i) => (
+            <li class="flex flex-col items-center text-center">
+              <div class="w-full max-w-[14rem]">
+                <div class="aspect-[1320/1900] overflow-hidden rounded-[1.5rem] shadow-lg">
+                  <Shot lang={lang} name={s.shot} alt={s.alt} sizes="(min-width: 768px) 224px, 60vw" class="!h-full !rounded-none !shadow-none object-cover object-top" />
+                </div>
+              </div>
+              <span class="mt-5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary font-extrabold text-primary-content">{i + 1}</span>
+              <h3 class="mt-2 text-xl font-extrabold">{s.title}</h3>
+              <p class="mt-1 opacity-90">{s.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <!-- Ocasions -->
+    <section id="occasions" class="bg-base-200">
+      <div class="mx-auto max-w-screen-lg px-4 py-16">
+        <h2 class={sectionTitle}>{h.occasions.title}</h2>
+        <p class="mt-2 opacity-80">{h.occasions.intro}</p>
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            OCCASIONS.map((o) => {
+              const card = o.text[lang].card;
+              const page = o.pages?.[lang];
+              return (
+                <li class="flex flex-col rounded-box bg-base-100 p-5 shadow">
+                  <h3 class="text-xl font-extrabold">{card.title}</h3>
+                  <ul class="mt-3 list-disc space-y-1 pl-5 opacity-90">
+                    {card.examples.map((e) => <li>{e}</li>)}
+                  </ul>
+                  {page && (
+                    <a href={pagePath(lang, page.slug)} class="mt-4 inline-flex min-h-11 items-center font-bold text-primary underline underline-offset-4">
+                      {h.occasions.more}<span class="sr-only">: {card.title}</span>
+                    </a>
+                  )}
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- Modes -->
+    <section class="mx-auto max-w-screen-lg px-4 py-16">
+      <h2 class={sectionTitle}>{h.modes.title}</h2>
+      <ul class="mt-8 grid gap-4 md:grid-cols-3">
+        {
+          h.modes.items.map((m) => (
+            <li class="rounded-box border-2 border-base-300 p-5">
+              <h3 class="text-xl font-extrabold text-primary">{m.title}</h3>
+              <p class="mt-2">{m.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Plantilles -->
+    <section class="bg-base-200">
+      <div class="mx-auto grid max-w-screen-lg items-center gap-10 px-4 py-16 md:grid-cols-2">
+        <div class="mx-auto w-full max-w-[16rem] md:order-2">
+          <div class="aspect-[1320/1900] overflow-hidden rounded-[1.5rem] shadow-lg">
+            <Shot lang={lang} name="03-templates" alt={h.templates.alt} sizes="256px" class="!h-full !rounded-none !shadow-none object-cover object-top" />
+          </div>
+        </div>
+        <div>
+          <h2 class={sectionTitle}>{h.templates.title}</h2>
+          <p class="mt-3">{h.templates.text}</p>
+          <p class="mt-3 font-bold">{h.templates.free}</p>
+          <p class="mt-1">{h.templates.paid}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privades -->
+    <section class="mx-auto max-w-screen-lg px-4 py-16">
+      <h2 class={sectionTitle}>{h.privacy.title}</h2>
+      <p class="mt-3 max-w-xl">{h.privacy.text}</p>
+      <ul class="mt-5 flex flex-wrap gap-3">
+        {h.privacy.points.map((p) => <li class="rounded-full bg-accent px-4 py-2 font-bold text-accent-content">{p}</li>)}
+      </ul>
+    </section>
+
+    <!-- Preu -->
+    <section id="pricing" class="bg-base-200">
+      <div class="mx-auto max-w-screen-lg px-4 py-16">
+        <h2 class={sectionTitle}>{h.pricing.title}</h2>
+        <p class="mt-2 opacity-80">{h.pricing.intro}</p>
+        <div class="mt-8 grid max-w-3xl gap-4 md:grid-cols-2">
+          <div class="rounded-box bg-base-100 p-6 shadow">
+            <h3 class="text-xl font-extrabold">{h.pricing.free.title}</h3>
+            <p class="mt-1 text-4xl font-extrabold">{h.pricing.free.price}</p>
+            <ul class="mt-4 space-y-2">
+              {h.pricing.free.rows.map((r) => <li class="flex gap-2"><span aria-hidden="true">✓</span>{r}</li>)}
+            </ul>
+          </div>
+          <div class="rounded-box border-4 border-primary bg-base-100 p-6 shadow">
+            <h3 class="text-xl font-extrabold">{h.pricing.pro.title}</h3>
+            <p class="mt-1 text-4xl font-extrabold">{h.pricing.pro.price}</p>
+            <p class="font-bold text-primary">{h.pricing.pro.badge}</p>
+            <ul class="mt-4 space-y-2">
+              {h.pricing.pro.rows.map((r) => <li class="flex gap-2"><span aria-hidden="true">✓</span>{r}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="mt-4 text-sm opacity-80">{h.pricing.note}</p>
+      </div>
+    </section>
+
+    {TESTIMONIALS.length > 0 && <Testimonials lang={lang} />}
+
+    <!-- FAQ -->
+    <section id="faq" class="mx-auto max-w-screen-md px-4 py-16">
+      <h2 class={sectionTitle}>{h.faq.title}</h2>
+      <div class="mt-8 divide-y divide-base-300 border-y border-base-300">
+        {
+          h.faq.items.map((i) => (
+            <details class="group py-1">
+              <summary class="flex min-h-11 items-center justify-between gap-4 py-2 text-lg font-bold">
+                {i.q}
+                <span aria-hidden="true" class="text-primary transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="pb-4 pr-8">{i.a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <p class="mt-6"><a href="/support" class="font-bold text-primary underline underline-offset-4">{h.faq.contact}</a></p>
+    </section>
+
+    <!-- CTA final -->
+    <section id="download" class="bg-neutral text-neutral-content">
+      <div class="mx-auto max-w-screen-lg px-4 py-16 text-center">
+        <h2 class={sectionTitle}>{h.cta.title}</h2>
+        <p class="mt-3 opacity-90">{h.cta.sub}</p>
+        <StoreButtons lang={lang} class="mt-6 justify-center" />
+      </div>
+    </section>
+  </main>
+</BaseLayout>

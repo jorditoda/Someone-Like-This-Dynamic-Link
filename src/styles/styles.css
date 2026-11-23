@@ -1,0 +1,20 @@
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+html {
+  scroll-padding-top: 5rem;
+}
+// Focus visible clar a tot el lloc.
+:focus-visible {
+  outline: 3px solid theme("colors.primary");
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+summary {
+  cursor: pointer;
+}
+summary::-webkit-details-marker {
+  display: none;
+}

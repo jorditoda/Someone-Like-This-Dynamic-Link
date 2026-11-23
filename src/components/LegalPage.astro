@@ -1,0 +1,22 @@
+---
+import Markdown from "react-markdown";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StoreButtons from "./StoreButtons.astro";
+
+interface Props {
+  path: string;
+  seo: { title: string; description: string };
+  content: string;
+}
+const { path, seo, content } = Astro.props;
+---
+
+<BaseLayout title={seo.title} description={seo.description} path={path}>
+  <main id="main" class="mx-auto max-w-screen-md px-4 py-10 md:py-16">
+    <!-- Renderitzat en build (sense client:*): no envia JavaScript al navegador. -->
+    <div class="prose max-w-none prose-a:text-primary prose-headings:font-extrabold">
+      <Markdown>{content}</Markdown>
+    </div>
+    <StoreButtons lang="en" class="mt-10" />
+  </main>
+</BaseLayout>

@@ -1,12 +1,6 @@
 ---
-import CookiesPolicyPage from "@modules/cookiesPolicy";
-import Layout from "Layout.astro";
-import defaultTemplateConfig from "utils/config";
+import LegalPage from "../components/LegalPage.astro";
+import { legal } from "../data/legal";
 ---
 
-<Layout
-  {...defaultTemplateConfig}
-  seo={defaultTemplateConfig.cookiesPolicy?.seo}
->
-  <CookiesPolicyPage client:load config={defaultTemplateConfig} />
-</Layout>
+<LegalPage path="/cookies-policy" seo={legal.cookiesPolicy.seo} content={legal.cookiesPolicy.content} />

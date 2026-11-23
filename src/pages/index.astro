@@ -1,9 +1,5 @@
 ---
-import HomePage from "@modules/home"
-import Layout from "Layout.astro"
-import defaultTemplateConfig from "utils/config"
+import Home from "../components/home/Home.astro";
 ---
 
-<Layout {...defaultTemplateConfig}>
-  <HomePage client:load config={defaultTemplateConfig} />
-</Layout>
+<Home lang="en" />
