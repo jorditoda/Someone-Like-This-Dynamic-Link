@@ -3,6 +3,7 @@ name: Deploy pnpm to GitHub pages
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: read
